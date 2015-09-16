@@ -1,18 +1,21 @@
 //
 //  BSMediaExporter.m
-//  TDAudioStreamer
 //
-//  Created by Bogdan Stasjuk on 8/27/15.
-//  Copyright (c) 2015 Bogdan Stasjuk. All rights reserved.
+//  Created by Bogdan Stasiuk on 8/27/15.
+//  Copyright (c) 2015 Bogdan Stasiuk. All rights reserved.
 //
 
 #import "BSMediaExporter.h"
 
-#import <AVFoundation/AVFoundation.h>
 #import <MobileCoreServices/UTType.h>
-#import <lame/lame.h>
 
-#import "BSMacros.h"
+#if IS_LAME_EXISTS
+#include "lame/lame.h"
+#endif
+
+#import <BSMacros/BSMacros.h>
+
+#import "BSAudioFileHelper.h"
 
 
 static NSString * const BSExportedFileName = @"exported";
@@ -85,9 +88,28 @@ static NSString * const BSExportedFileName = @"exported";
     return self;
 }
 
-- (void)exportAssetToCAF:(AVAsset *)asset {
+- (void)exportAsset:(AVAsset *)asset toAudioFormat:(AudioFormatID)audioFormatID {
+    NSString *avFileType;
+    switch (audioFormatID) {
+        case kAudioFormatLinearPCM:
+            avFileType = AVFileTypeCoreAudioFormat;
+            break;
+        case kAudioFormatMPEG4AAC:
+            avFileType = AVFileTypeMPEG4;
+            break;
+            
+        default:
+            BSLog(@"There is no AVFileType constant for audioFormat '%@'", [BSAudioFileHelper nameForAudioFormatID:audioFormatID]);
+
+            if (self.failure) {
+                self.failure(nil);
+            }
+            
+            return;
+    }
+    
     NSError *error;
-    self.outputCAFURL = [[self class] outputURLForAVFileType:AVFileTypeCoreAudioFormat error:error];
+    self.outputCAFURL = [[self class] outputURLForAVFileType:avFileType error:error];
     if (!self.outputCAFURL) {
         if (self.failure) {
             self.failure(error);
@@ -112,7 +134,7 @@ static NSString * const BSExportedFileName = @"exported";
             success = ([asset statusOfValueForKey:@"tracks" error:&localError] == AVKeyValueStatusLoaded);
 
             if (success) {
-                success = [self setupAssetReaderAndAssetWriterWithAsset:asset error:&localError];
+                success = [self setupAssetReaderAndAssetWriterWithAsset:asset outputAudioFormat:audioFormatID error:&localError];
             }
             
             if (success) {
@@ -126,12 +148,14 @@ static NSString * const BSExportedFileName = @"exported";
     }];
 }
 
+#if IS_LAME_EXISTS
 - (void)exportAssetToMP3:(AVAsset *)asset {
     BSLog();
     
     self.exportToMP3 = YES;
     [self exportAssetToCAF:asset];
 }
+#endif
 
 - (void)cancel {
     // Handle cancellation asynchronously, but serialize it with the main queue.
@@ -176,7 +200,7 @@ static NSString * const BSExportedFileName = @"exported";
 
 #pragma - Private methods
 
-- (BOOL)setupAssetReaderAndAssetWriterWithAsset:(AVAsset *)asset error:(NSError **)outError {
+- (BOOL)setupAssetReaderAndAssetWriterWithAsset:(AVAsset *)asset outputAudioFormat:(AudioFormatID)audioFormatID error:(NSError **)outError {
     // Create and initialize the asset reader.
     self.assetReader = [[AVAssetReader alloc] initWithAsset:asset error:outError];
     BOOL success = (self.assetReader != nil);
@@ -186,20 +210,19 @@ static NSString * const BSExportedFileName = @"exported";
         success = (self.assetWriter != nil);
     }
     
+    // If the reader and writer were successfully initialized, grab the audio and video asset tracks that will be used.
     if (success) {
-        // If the reader and writer were successfully initialized, grab the audio and video asset tracks that will be used.
-        AVAssetTrack *assetAudioTrack = nil, *assetVideoTrack = nil;
         NSArray *audioTracks = [asset tracksWithMediaType:AVMediaTypeAudio];
-        if ([audioTracks count] > 0)
-            assetAudioTrack = [audioTracks objectAtIndex:0];
+        AVAssetTrack *assetAudioTrack = audioTracks.firstObject;
+
         NSArray *videoTracks = [asset tracksWithMediaType:AVMediaTypeVideo];
-        if ([videoTracks count] > 0)
-            assetVideoTrack = [videoTracks objectAtIndex:0];
+        AVAssetTrack *assetVideoTrack = videoTracks.firstObject;
         
+        // If there is an audio track to read, set the decompression settings to Linear PCM and create the asset reader output.
         if (assetAudioTrack) {
-            // If there is an audio track to read, set the decompression settings to Linear PCM and create the asset reader output.
-            NSDictionary *decompressionAudioSettings = @{ AVFormatIDKey : [NSNumber numberWithUnsignedInt:kAudioFormatLinearPCM] };
+            NSDictionary *decompressionAudioSettings = @{ AVFormatIDKey : @(kAudioFormatLinearPCM), };
             self.assetReaderAudioOutput = [AVAssetReaderTrackOutput assetReaderTrackOutputWithTrack:assetAudioTrack outputSettings:decompressionAudioSettings];
+
             [self.assetReader addOutput:self.assetReaderAudioOutput];
             // Then, set the compression settings to 128kbps AAC and create the asset writer input.
             AudioChannelLayout stereoChannelLayout = {
@@ -208,36 +231,56 @@ static NSString * const BSExportedFileName = @"exported";
                 .mNumberChannelDescriptions = 0
             };
             NSData *channelLayoutAsData = [NSData dataWithBytes:&stereoChannelLayout length:offsetof(AudioChannelLayout, mChannelDescriptions)];
-            NSDictionary *compressionAudioSettings = @{
-                                                       AVFormatIDKey: [NSNumber numberWithUnsignedInt:kAudioFormatLinearPCM],
-                                                       
-                                                       AVLinearPCMBitDepthKey: @16,
-                                                       AVLinearPCMIsBigEndianKey: @NO,
-                                                       AVLinearPCMIsFloatKey: @NO,
-                                                       AVLinearPCMIsNonInterleaved: @NO,
-                                                       AVSampleRateKey: @44100.f,
-                                                       AVChannelLayoutKey: channelLayoutAsData,
-                                                       AVNumberOfChannelsKey: @2,
-                                                       
-                                                       /* The following keys are not allowed when format ID is 'lpcm' */
-                                                       //                                                       AVEncoderAudioQualityKey: @(AVAudioQualityMax),
-                                                       //                                                       AVEncoderBitRateStrategyKey: AVAudioBitRateStrategy_Variable,
-                                                       //                                                       AVEncoderAudioQualityForVBRKey: @(AVAudioQualityMax),
-                                                       
-                                                       /* AVAssetWriterInput does not support AVSampleRateConverterAudioQualityKey' */
-                                                       //                                                       AVSampleRateConverterAudioQualityKey: @(AVAudioQualityMax),
-                                                       
-                                                       /* The following keys are not allowed when format ID is 'lpcm': AVEncoderBitRateKey' */
-                                                       //                                                       AVEncoderBitRateKey   : [NSNumber numberWithInteger:128000],
-                                                       };
+            
+            /*The following keys are not allowed when format ID is 'aach' (kAudioFormatMPEG4AAC_HE): AVLinearPCMIsBigEndianKey, AVLinearPCMIsFloatKey, AVLinearPCMIsNonInterleaved, AVLinearPCMBitDepthKey'*/
+            //                                                       AVLinearPCMIsBigEndianKey: @NO,
+            //                                                       AVLinearPCMIsFloatKey: @NO,
+            //                                                       AVLinearPCMIsNonInterleaved: @NO,
+            //                                                       AVLinearPCMBitDepthKey: @16,
+            
+            /* The following keys are not allowed when format ID is 'lpcm' (kAudioFormatLinearPCM) */
+            //                                                       AVEncoderAudioQualityKey: @(AVAudioQualityMax),
+            //                                                       AVEncoderBitRateStrategyKey: AVAudioBitRateStrategy_Variable,
+            //                                                       AVEncoderAudioQualityForVBRKey: @(AVAudioQualityMax),
+            //                                                       AVEncoderBitRateKey   : [NSNumber numberWithInteger:128000],
+            
+            /* AVAssetWriterInput does not support: */
+            //                                                       AVSampleRateConverterAudioQualityKey: @(AVAudioQualityMax),
+            //                                                       AVEncoderAudioQualityKey: @(AVAudioQualityMax),
+            NSDictionary *compressionAudioSettingsCustom;
+            switch (audioFormatID) {
+                case kAudioFormatMPEG4AAC:
+                    compressionAudioSettingsCustom = @{ AVEncoderBitRateKey: @64000, };
+                    break;
+                case kAudioFormatLinearPCM:
+                    compressionAudioSettingsCustom = @{ AVLinearPCMBitDepthKey: @16,
+                                                        AVLinearPCMIsBigEndianKey: @NO,
+                                                        AVLinearPCMIsFloatKey: @NO,
+                                                        AVLinearPCMIsNonInterleaved: @NO, };
+                    
+                    
+                default:
+                    BSLog(@"There is no outputSettings for audioFormat '%@'", [BSAudioFileHelper nameForAudioFormatID:audioFormatID]);
+                    
+                    if (self.failure) {
+                        self.failure(nil);
+                    }
+                    
+                    return NO;
+            }
+            
+            NSMutableDictionary *compressionAudioSettings = @{AVFormatIDKey: @(audioFormatID),
+                                                              AVChannelLayoutKey: channelLayoutAsData,
+                                                              AVSampleRateKey: @44100.f,
+                                                              AVNumberOfChannelsKey: @2, }.mutableCopy;
+            [compressionAudioSettings addEntriesFromDictionary:compressionAudioSettingsCustom];
+            
             self.assetWriterAudioInput = [AVAssetWriterInput assetWriterInputWithMediaType:[assetAudioTrack mediaType] outputSettings:compressionAudioSettings];
             [self.assetWriter addInput:self.assetWriterAudioInput];
         }
         
-        
-        if (assetVideoTrack)
-        {
-            // If there is a video track to read, set the decompression settings for YUV and create the asset reader output.
+        // If there is a video track to read, set the decompression settings for YUV and create the asset reader output.
+        if (assetVideoTrack) {
             NSDictionary *decompressionVideoSettings = @{
                                                          (id)kCVPixelBufferPixelFormatTypeKey     : [NSNumber numberWithUnsignedInt:kCVPixelFormatType_422YpCbCr8],
                                                          (id)kCVPixelBufferIOSurfacePropertiesKey : [NSDictionary dictionary]
@@ -247,8 +290,9 @@ static NSString * const BSExportedFileName = @"exported";
             CMFormatDescriptionRef formatDescription = NULL;
             // Grab the video format descriptions from the video track and grab the first one if it exists.
             NSArray *videoFormatDescriptions = [assetVideoTrack formatDescriptions];
-            if ([videoFormatDescriptions count] > 0)
+            if ([videoFormatDescriptions count] > 0) {
                 formatDescription = (__bridge CMFormatDescriptionRef)[videoFormatDescriptions objectAtIndex:0];
+            }
             CGSize trackDimensions = {
                 .width = 0.0,
                 .height = 0.0,
@@ -465,9 +509,11 @@ static NSString * const BSExportedFileName = @"exported";
         self.videoFinished = NO;
         self.audioFinished = NO;
         BSLogCap(@"readingAndWritingDidFinishSuccessfully url: %@", self.outputURL);
-        
+ 
         if (self.exportToMP3) {
+#if IS_LAME_EXISTS
             [self toMp3];
+#endif
         } else {
             if (self.success) {
                 self.success(self.outputCAFURL);
@@ -488,6 +534,7 @@ static NSString * const BSExportedFileName = @"exported";
 
 #pragma mark -MP3 converting
 
+#if IS_LAME_EXISTS
 - (void)toMp3 {
     NSString *cafFilePath = self.outputCAFURL.path;
 
@@ -568,6 +615,7 @@ static NSString * const BSExportedFileName = @"exported";
         self.success(mp3FileURL);
     }
 }
+#endif
 
 - (NSInteger) getFileSize:(NSString*) path
 {

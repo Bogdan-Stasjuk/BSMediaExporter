@@ -1,0 +1,573 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01EE4991AD483E1F7FE2E0B795151CAC /* NSFileManager+Helper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CCDD1BD829E07148BB53EB18980AA3 /* NSFileManager+Helper-dummy.m */; };
+		0B62E49D6F312C7D15DA948686854D53 /* BSAudioFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9342F3B5FFB542F2E6D352E89E3C1 /* BSAudioFileHelper.m */; };
+		0CDBF08EC7EDF2711AFBC861DC697711 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0AF59DECF429F4381818A075A094CB /* Foundation.framework */; };
+		2BAE899049DFF04AE5EA65251048A987 /* Pods-BSMediaExporterUsage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB2855D66503E6B0D5D3D0F79CB6ED8 /* Pods-BSMediaExporterUsage-dummy.m */; };
+		2D4C28469E6F9062455DA852C5384507 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0AF59DECF429F4381818A075A094CB /* Foundation.framework */; };
+		71BF6192F55762E9670A4438AFAF1191 /* BSAudioFileHelper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A45F133AD972D249CE7EE5F4B95C014 /* BSAudioFileHelper-dummy.m */; };
+		8DE85356C1EE651360D2E637B37E5273 /* NSFileManager+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65444025B2CA953D85ABE6E5DCD008E8 /* NSFileManager+Helper.m */; };
+		A780C841FB62807F0148524ABF2B6791 /* NSFileManager+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E14A7A64172EF3954FC20307E909E68 /* NSFileManager+Helper.h */; };
+		B90650FF8796F8BC55A168A05CA2F628 /* BSAudioFileHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AF48ADE325AE555284236F69F1899B9 /* BSAudioFileHelper.h */; };
+		F4E7E0CFC3A0577327E4EFAEF2A66FAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0AF59DECF429F4381818A075A094CB /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B6A04265A2F9148B9DD5AA1AE112E5E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE5CD778A488DEC4ECFA4900686CBB54;
+			remoteInfo = BSAudioFileHelper;
+		};
+		D63BEF91C963BF9AD6C05CC9665CE376 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25CC563D6B22EDDF8159598FC19418E0;
+			remoteInfo = "NSFileManager+Helper";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1AF48ADE325AE555284236F69F1899B9 /* BSAudioFileHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BSAudioFileHelper.h; path = BSAudioFileHelper/BSAudioFileHelper.h; sourceTree = "<group>"; };
+		25C863B2FA51006D21AEC7C60C9749B1 /* libNSFileManager+Helper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libNSFileManager+Helper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B8EB5724A39E007ED25C6B1F4F528F4 /* Pods-BSMediaExporterUsage-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BSMediaExporterUsage-resources.sh"; sourceTree = "<group>"; };
+		3A45F133AD972D249CE7EE5F4B95C014 /* BSAudioFileHelper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BSAudioFileHelper-dummy.m"; sourceTree = "<group>"; };
+		4E14A7A64172EF3954FC20307E909E68 /* NSFileManager+Helper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+Helper.h"; path = "NSFileManager+Helper/NSFileManager+Helper.h"; sourceTree = "<group>"; };
+		593A604C7E4CD3E54F6AD6D559AC765E /* Pods-BSMediaExporterUsage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BSMediaExporterUsage.release.xcconfig"; sourceTree = "<group>"; };
+		65444025B2CA953D85ABE6E5DCD008E8 /* NSFileManager+Helper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+Helper.m"; path = "NSFileManager+Helper/NSFileManager+Helper.m"; sourceTree = "<group>"; };
+		6E831441AB6AD22C0AA300846D382008 /* NSFileManager+Helper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSFileManager+Helper.xcconfig"; sourceTree = "<group>"; };
+		7053F51C624139964BAD15FE6B040CE6 /* BSAudioFileHelper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BSAudioFileHelper-prefix.pch"; sourceTree = "<group>"; };
+		7776B64E8F92609DFD613E8539AEF065 /* BSAudioFileHelper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BSAudioFileHelper.xcconfig; sourceTree = "<group>"; };
+		80A345CDD8863BCAA102E1B8FBE2C098 /* libPods-BSMediaExporterUsage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BSMediaExporterUsage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8964CDC5E2270C0CEAF763C1CB428A31 /* BSMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BSMacros.h; path = BSMacros/BSMacros.h; sourceTree = "<group>"; };
+		8CAE350D4C0C8975C111F0514095C863 /* Pods-BSMediaExporterUsage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BSMediaExporterUsage.debug.xcconfig"; sourceTree = "<group>"; };
+		9B0AF59DECF429F4381818A075A094CB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		A67F944334E5B9B31C5819B5A808B690 /* Pods-BSMediaExporterUsage-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BSMediaExporterUsage-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AA4567BFDE099B3BF9CF59C5150D0583 /* BSAudioFileHelper-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "BSAudioFileHelper-Private.xcconfig"; sourceTree = "<group>"; };
+		ADB2855D66503E6B0D5D3D0F79CB6ED8 /* Pods-BSMediaExporterUsage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BSMediaExporterUsage-dummy.m"; sourceTree = "<group>"; };
+		AEA9342F3B5FFB542F2E6D352E89E3C1 /* BSAudioFileHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BSAudioFileHelper.m; path = BSAudioFileHelper/BSAudioFileHelper.m; sourceTree = "<group>"; };
+		B587C9FFB392DD108235047E72CF1151 /* NSFileManager+Helper-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSFileManager+Helper-Private.xcconfig"; sourceTree = "<group>"; };
+		B9CCDD1BD829E07148BB53EB18980AA3 /* NSFileManager+Helper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Helper-dummy.m"; sourceTree = "<group>"; };
+		C88113A79685B4EFEE7BAD12896829F7 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D3FF41F15F2BDDB6A349B2911104DB71 /* libBSAudioFileHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBSAudioFileHelper.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6BAAC01B7DA80C11D821D8B27A5CA30 /* Pods-BSMediaExporterUsage-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BSMediaExporterUsage-acknowledgements.plist"; sourceTree = "<group>"; };
+		FD702358A523510F243C38D268E4B2CB /* NSFileManager+Helper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Helper-prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		18558B2E728F84DA16CF54452379F8F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4E7E0CFC3A0577327E4EFAEF2A66FAC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3BA0AFC97D6ACA05D293CABE15881CA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D4C28469E6F9062455DA852C5384507 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F88F51204A2DF955DFCDE33BED91596 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CDBF08EC7EDF2711AFBC861DC697711 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1F6A788799D588E5FA114B10AA6FD3CA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7776B64E8F92609DFD613E8539AEF065 /* BSAudioFileHelper.xcconfig */,
+				AA4567BFDE099B3BF9CF59C5150D0583 /* BSAudioFileHelper-Private.xcconfig */,
+				3A45F133AD972D249CE7EE5F4B95C014 /* BSAudioFileHelper-dummy.m */,
+				7053F51C624139964BAD15FE6B040CE6 /* BSAudioFileHelper-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BSAudioFileHelper";
+			sourceTree = "<group>";
+		};
+		3321488E0AD8A632B502B05CA46A4DF4 /* BSAudioFileHelper */ = {
+			isa = PBXGroup;
+			children = (
+				1AF48ADE325AE555284236F69F1899B9 /* BSAudioFileHelper.h */,
+				AEA9342F3B5FFB542F2E6D352E89E3C1 /* BSAudioFileHelper.m */,
+				1F6A788799D588E5FA114B10AA6FD3CA /* Support Files */,
+			);
+			path = BSAudioFileHelper;
+			sourceTree = "<group>";
+		};
+		33A2DFA941E11F4B5B7E005D2FE0A3E5 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				9B0AF59DECF429F4381818A075A094CB /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		3751D3B53C0FA352FC9ABDCE597396B8 /* NSFileManager+Helper */ = {
+			isa = PBXGroup;
+			children = (
+				4E14A7A64172EF3954FC20307E909E68 /* NSFileManager+Helper.h */,
+				65444025B2CA953D85ABE6E5DCD008E8 /* NSFileManager+Helper.m */,
+				A091B8C0CB007DF8B324B913880E67C3 /* Support Files */,
+			);
+			path = "NSFileManager+Helper";
+			sourceTree = "<group>";
+		};
+		5E1F3384B1B39575144FEBFCF3210CCC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				33A2DFA941E11F4B5B7E005D2FE0A3E5 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				C88113A79685B4EFEE7BAD12896829F7 /* Podfile */,
+				5E1F3384B1B39575144FEBFCF3210CCC /* Frameworks */,
+				B72A7892EECA4A44771AFFC274D6CFA9 /* Pods */,
+				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
+				848A6CE8DA3504A266A17F635DC3683A /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		848A6CE8DA3504A266A17F635DC3683A /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DFE7699ED9C4555F0901903958B67FAE /* Pods-BSMediaExporterUsage */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		A091B8C0CB007DF8B324B913880E67C3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6E831441AB6AD22C0AA300846D382008 /* NSFileManager+Helper.xcconfig */,
+				B587C9FFB392DD108235047E72CF1151 /* NSFileManager+Helper-Private.xcconfig */,
+				B9CCDD1BD829E07148BB53EB18980AA3 /* NSFileManager+Helper-dummy.m */,
+				FD702358A523510F243C38D268E4B2CB /* NSFileManager+Helper-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/NSFileManager+Helper";
+			sourceTree = "<group>";
+		};
+		B72A7892EECA4A44771AFFC274D6CFA9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3321488E0AD8A632B502B05CA46A4DF4 /* BSAudioFileHelper */,
+				F90A71556B61E6827FE7BBBC11CED86C /* BSMacros */,
+				3751D3B53C0FA352FC9ABDCE597396B8 /* NSFileManager+Helper */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D3FF41F15F2BDDB6A349B2911104DB71 /* libBSAudioFileHelper.a */,
+				25C863B2FA51006D21AEC7C60C9749B1 /* libNSFileManager+Helper.a */,
+				80A345CDD8863BCAA102E1B8FBE2C098 /* libPods-BSMediaExporterUsage.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DFE7699ED9C4555F0901903958B67FAE /* Pods-BSMediaExporterUsage */ = {
+			isa = PBXGroup;
+			children = (
+				A67F944334E5B9B31C5819B5A808B690 /* Pods-BSMediaExporterUsage-acknowledgements.markdown */,
+				E6BAAC01B7DA80C11D821D8B27A5CA30 /* Pods-BSMediaExporterUsage-acknowledgements.plist */,
+				ADB2855D66503E6B0D5D3D0F79CB6ED8 /* Pods-BSMediaExporterUsage-dummy.m */,
+				2B8EB5724A39E007ED25C6B1F4F528F4 /* Pods-BSMediaExporterUsage-resources.sh */,
+				8CAE350D4C0C8975C111F0514095C863 /* Pods-BSMediaExporterUsage.debug.xcconfig */,
+				593A604C7E4CD3E54F6AD6D559AC765E /* Pods-BSMediaExporterUsage.release.xcconfig */,
+			);
+			name = "Pods-BSMediaExporterUsage";
+			path = "Target Support Files/Pods-BSMediaExporterUsage";
+			sourceTree = "<group>";
+		};
+		F90A71556B61E6827FE7BBBC11CED86C /* BSMacros */ = {
+			isa = PBXGroup;
+			children = (
+				8964CDC5E2270C0CEAF763C1CB428A31 /* BSMacros.h */,
+			);
+			path = BSMacros;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0B94EE65E51989291A8392B58C61283E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A780C841FB62807F0148524ABF2B6791 /* NSFileManager+Helper.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F82FFA7BC3EBC745BB07D818BAA4C657 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B90650FF8796F8BC55A168A05CA2F628 /* BSAudioFileHelper.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		25CC563D6B22EDDF8159598FC19418E0 /* NSFileManager+Helper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8673E0A8583D3EEF6FFDA8F56FAD9276 /* Build configuration list for PBXNativeTarget "NSFileManager+Helper" */;
+			buildPhases = (
+				BACF9B886A9B1DBDBB9E518170EEFD90 /* Sources */,
+				3F88F51204A2DF955DFCDE33BED91596 /* Frameworks */,
+				0B94EE65E51989291A8392B58C61283E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NSFileManager+Helper";
+			productName = "NSFileManager+Helper";
+			productReference = 25C863B2FA51006D21AEC7C60C9749B1 /* libNSFileManager+Helper.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		BE5CD778A488DEC4ECFA4900686CBB54 /* BSAudioFileHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8241294F8F14A00E166364BE6D5AE52A /* Build configuration list for PBXNativeTarget "BSAudioFileHelper" */;
+			buildPhases = (
+				A5CB35BEC88382FCEE31CC373733C80D /* Sources */,
+				3BA0AFC97D6ACA05D293CABE15881CA6 /* Frameworks */,
+				F82FFA7BC3EBC745BB07D818BAA4C657 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BSAudioFileHelper;
+			productName = BSAudioFileHelper;
+			productReference = D3FF41F15F2BDDB6A349B2911104DB71 /* libBSAudioFileHelper.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		EEE243E02DB86FCE47612CB1C272DE2E /* Pods-BSMediaExporterUsage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF5ED6EF792F37006BC9E95307572C36 /* Build configuration list for PBXNativeTarget "Pods-BSMediaExporterUsage" */;
+			buildPhases = (
+				8E932E6B72508F6A8F806F7BAE44C5DD /* Sources */,
+				18558B2E728F84DA16CF54452379F8F7 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				71DFD85236F27C824BDD4094C0EB3EC6 /* PBXTargetDependency */,
+				B12B0CF7BAF7B3030215461554FC3AC5 /* PBXTargetDependency */,
+			);
+			name = "Pods-BSMediaExporterUsage";
+			productName = "Pods-BSMediaExporterUsage";
+			productReference = 80A345CDD8863BCAA102E1B8FBE2C098 /* libPods-BSMediaExporterUsage.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = CCA510CFBEA2D207524CDA0D73C3B561 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE5CD778A488DEC4ECFA4900686CBB54 /* BSAudioFileHelper */,
+				25CC563D6B22EDDF8159598FC19418E0 /* NSFileManager+Helper */,
+				EEE243E02DB86FCE47612CB1C272DE2E /* Pods-BSMediaExporterUsage */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8E932E6B72508F6A8F806F7BAE44C5DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BAE899049DFF04AE5EA65251048A987 /* Pods-BSMediaExporterUsage-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5CB35BEC88382FCEE31CC373733C80D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71BF6192F55762E9670A4438AFAF1191 /* BSAudioFileHelper-dummy.m in Sources */,
+				0B62E49D6F312C7D15DA948686854D53 /* BSAudioFileHelper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BACF9B886A9B1DBDBB9E518170EEFD90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01EE4991AD483E1F7FE2E0B795151CAC /* NSFileManager+Helper-dummy.m in Sources */,
+				8DE85356C1EE651360D2E637B37E5273 /* NSFileManager+Helper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		71DFD85236F27C824BDD4094C0EB3EC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BSAudioFileHelper;
+			target = BE5CD778A488DEC4ECFA4900686CBB54 /* BSAudioFileHelper */;
+			targetProxy = B6A04265A2F9148B9DD5AA1AE112E5E5 /* PBXContainerItemProxy */;
+		};
+		B12B0CF7BAF7B3030215461554FC3AC5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "NSFileManager+Helper";
+			target = 25CC563D6B22EDDF8159598FC19418E0 /* NSFileManager+Helper */;
+			targetProxy = D63BEF91C963BF9AD6C05CC9665CE376 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		082F514586EE33FEA89641D219776F21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CAE350D4C0C8975C111F0514095C863 /* Pods-BSMediaExporterUsage.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2AE465316A0BAF5634D3CC0A1C91EB2F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B587C9FFB392DD108235047E72CF1151 /* NSFileManager+Helper-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/NSFileManager+Helper/NSFileManager+Helper-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		31DBFE0E6C57C3489AB533556AD5E6B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B587C9FFB392DD108235047E72CF1151 /* NSFileManager+Helper-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/NSFileManager+Helper/NSFileManager+Helper-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3245CCC302F0C01FA1E8ABA8F8B40154 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA4567BFDE099B3BF9CF59C5150D0583 /* BSAudioFileHelper-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BSAudioFileHelper/BSAudioFileHelper-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3523159348E1035C58EF859238BFEDB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		7437CA5A7AE3448BE959E7BA09293886 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA4567BFDE099B3BF9CF59C5150D0583 /* BSAudioFileHelper-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BSAudioFileHelper/BSAudioFileHelper-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A384B2BD107D76FA058EB4F2608EE460 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 593A604C7E4CD3E54F6AD6D559AC765E /* Pods-BSMediaExporterUsage.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		A88658A9552ACB0502744ED7A6EDBEFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3523159348E1035C58EF859238BFEDB0 /* Debug */,
+				A88658A9552ACB0502744ED7A6EDBEFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8241294F8F14A00E166364BE6D5AE52A /* Build configuration list for PBXNativeTarget "BSAudioFileHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7437CA5A7AE3448BE959E7BA09293886 /* Debug */,
+				3245CCC302F0C01FA1E8ABA8F8B40154 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8673E0A8583D3EEF6FFDA8F56FAD9276 /* Build configuration list for PBXNativeTarget "NSFileManager+Helper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AE465316A0BAF5634D3CC0A1C91EB2F /* Debug */,
+				31DBFE0E6C57C3489AB533556AD5E6B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF5ED6EF792F37006BC9E95307572C36 /* Build configuration list for PBXNativeTarget "Pods-BSMediaExporterUsage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				082F514586EE33FEA89641D219776F21 /* Debug */,
+				A384B2BD107D76FA058EB4F2608EE460 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

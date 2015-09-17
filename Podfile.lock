@@ -1,0 +1,17 @@
+PODS:
+  - BSAudioFileHelper (1.0.1):
+    - BSMacros
+  - BSMacros (1.0.1)
+  - NSFileManager+Helper (0.1.2)
+
+DEPENDENCIES:
+  - BSAudioFileHelper (~> 1.0)
+  - BSMacros (~> 1.0)
+  - NSFileManager+Helper (~> 0.1)
+
+SPEC CHECKSUMS:
+  BSAudioFileHelper: ef8f60d91d1adc6060f63299675fdd9cfe85c081
+  BSMacros: d7e1bc4291b306223b1187414ea7c1f7ab198e53
+  NSFileManager+Helper: 17c6d3b82fb82c776fe7fed712d3069d24b3ab90
+
+COCOAPODS: 0.38.0

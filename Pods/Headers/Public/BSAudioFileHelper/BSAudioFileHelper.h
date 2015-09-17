@@ -1,0 +1,1 @@
+../../../BSAudioFileHelper/BSAudioFileHelper/BSAudioFileHelper.h

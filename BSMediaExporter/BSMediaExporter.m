@@ -9,13 +9,12 @@
 
 #import <MobileCoreServices/UTType.h>
 
+#import <BSMacros/BSMacros.h>
+#import <BSAudioFileHelper/BSAudioFileHelper.h>
+
 #if IS_LAME_EXISTS
 #include "lame/lame.h"
 #endif
-
-#import <BSMacros/BSMacros.h>
-
-#import "BSAudioFileHelper.h"
 
 
 static NSString * const BSExportedFileName = @"exported";
@@ -52,17 +51,10 @@ static NSString * const BSExportedFileName = @"exported";
 #pragma mark -Static
 
 + (NSURL *)outputURLForAVFileType:(NSString *)avFileType error:(NSError *)error {
-    NSURL *outputURL = [[[[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil] URLByAppendingPathComponent:BSExportedFileName] URLByAppendingPathExtension:CFBridgingRelease(UTTypeCopyPreferredTagWithClass((__bridge CFStringRef)avFileType, kUTTagClassFilenameExtension))];
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:outputURL.path]) {
-        if (![[NSFileManager defaultManager] removeItemAtURL:outputURL error:&error]) {
-            BSLog(@"[[NSFileManager defaultManager] removeItemAtURL:%@ error:%@]", outputURL, error);
-            
-            return nil;
-        }
-    }
-    
-    BSLogCap(@"exportURL = %@\nexportURL.path = %@\nexportURL.absoluteString = %@", outputURL, outputURL.path, outputURL.absoluteString);
+    NSString *filenameExtansion = CFBridgingRelease(UTTypeCopyPreferredTagWithClass((__bridge CFStringRef)avFileType, kUTTagClassFilenameExtension));
+    NSString *filename = [BSExportedFileName stringByAppendingPathExtension:filenameExtansion];
+    NSURL *outputURL = [NSFileManager getTmpURLWithFilename:filename];
+    BSLogCap(@"%@", outputURL);
     
     return outputURL;
 }

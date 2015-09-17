@@ -11,6 +11,7 @@
 
 #import <BSMacros/BSMacros.h>
 #import <BSAudioFileHelper/BSAudioFileHelper.h>
+#import <NSFileManager+Helper/NSFileManager+Helper.h>
 
 #if IS_LAME_EXISTS
 #include "lame/lame.h"

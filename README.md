@@ -2,6 +2,15 @@
 Class for exporting and converting media files.
 
 
+##Project uses next pods:
+
+```objc
+pod 'BSMacros'
+pod 'BSAudioFileHelper'
+pod 'NSFileManager+Helper'
+```
+
+
 Compatibility
 =============
 

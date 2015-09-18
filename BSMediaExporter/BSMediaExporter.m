@@ -23,6 +23,14 @@ static NSString * const BSExportedFileName = @"exported";
 
 @interface BSMediaExporter ()
 
+#pragma mark - Properties
+
+#pragma mark -Public
+
+@property (assign, nonatomic) CGFloat progress;
+
+#pragma mark -Private
+
 @property (strong, nonatomic) dispatch_group_t dispatchGroup;
 @property (strong, nonatomic) dispatch_queue_t mainSerializationQueue;
 @property (strong, nonatomic) dispatch_queue_t rwAudioSerializationQueue;
@@ -41,6 +49,8 @@ static NSString * const BSExportedFileName = @"exported";
 @property (assign, nonatomic) BOOL exportToMP3;
 @property (assign, nonatomic) BOOL audioFinished;
 @property (assign, nonatomic) BOOL videoFinished;
+
+@property (assign, nonatomic) NSTimeInterval duration;
 
 @end
 
@@ -194,6 +204,8 @@ static NSString * const BSExportedFileName = @"exported";
 #pragma - Private methods
 
 - (BOOL)setupAssetReaderAndAssetWriterWithAsset:(AVAsset *)asset outputAudioFormat:(AudioFormatID)audioFormatID error:(NSError **)outError {
+    self.duration = CMTimeGetSeconds(asset.duration);
+    
     // Create and initialize the asset reader.
     self.assetReader = [[AVAssetReader alloc] initWithAsset:asset error:outError];
     BOOL success = (self.assetReader != nil);
@@ -386,25 +398,26 @@ static NSString * const BSExportedFileName = @"exported";
                 {
                     // Get the next audio sample buffer, and append it to the output file.
                     CMSampleBufferRef sampleBuffer = [self.assetReaderAudioOutput copyNextSampleBuffer];
-                    if (sampleBuffer != NULL)
-                    {
+                    if (sampleBuffer != NULL) {
                         BOOL success = [self.assetWriterAudioInput appendSampleBuffer:sampleBuffer];
+                        if (success) {
+                            CMTime presentationTimeStamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+                            self.progress = CMTimeGetSeconds(presentationTimeStamp) / self.duration;
+                        }
+                        
                         CFRelease(sampleBuffer);
                         sampleBuffer = NULL;
                         completedOrFailed = !success;
-                    }
-                    else
-                    {
+                    } else {
                         completedOrFailed = YES;
                     }
                 }
-                if (completedOrFailed)
-                {
+                
+                if (completedOrFailed) {
                     // Mark the input as finished, but only if we haven't already done so, and then leave the dispatch group (since the audio work has finished).
                     BOOL oldFinished = self.audioFinished;
                     self.audioFinished = YES;
-                    if (oldFinished == NO)
-                    {
+                    if (oldFinished == NO) {
                         [self.assetWriterAudioInput markAsFinished];
                     }
                     dispatch_group_leave(self.dispatchGroup);

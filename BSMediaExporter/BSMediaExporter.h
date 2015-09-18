@@ -23,6 +23,11 @@
 @property (copy, nonatomic) void (^failure)(NSError *error);
 
 /*!
+ * @brief The progress of the exporting audio item on a scale from 0 to 1. A value of 0 means the export has not yet begun, 1 means the export is complete. Export to mp3 isn't handled.
+ */
+@property (assign, readonly, nonatomic) CGFloat progress;
+
+/*!
  * @discussion Creates file at documents directory or removes existing file
  * @param avFileType AVFileType constant
  * @param error Error of creating file

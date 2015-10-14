@@ -472,6 +472,8 @@ static NSString * const BSExportedFileName = @"exported";
             
             // Check to see if the work has finished due to cancellation.
             if (self.cancelled) {
+                BSLogCap(@"Cancelled");
+                
                 // If so, cancel the reader and writer.
                 [self.assetReader cancelReading];
                 [self.assetWriter cancelWriting];
@@ -510,19 +512,23 @@ static NSString * const BSExportedFileName = @"exported";
 
 - (void)readingAndWritingDidFinishSuccessfully:(BOOL)success withError:(NSError *)error {
     if (success) {
+        self.progress = 1.f;
         // Reencoding was successful, reset booleans.
-        self.cancelled = NO;
         self.videoFinished = NO;
         self.audioFinished = NO;
         BSLogCap(@"readingAndWritingDidFinishSuccessfully url: %@", self.outputURL);
- 
-        if (self.exportToMP3) {
-#if IS_LAME_EXISTS
-            [self toMp3];
-#endif
+
+        if (self.cancelled) {
+            self.cancelled = NO;
         } else {
-            if (self.success) {
-                self.success(self.outputCAFURL);
+            if (self.exportToMP3) {
+#if IS_LAME_EXISTS
+                [self toMp3];
+#endif
+            } else {
+                if (self.success) {
+                    self.success(self.outputCAFURL);
+                }
             }
         }
     } else {

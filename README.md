@@ -38,7 +38,7 @@ This class has been tested back to iOS 7.0.
 Installation
 ============
 
-__Cocoapods__: `pod 'BSMediaExporter'`<br />
+__CocoaPods__: `pod 'BSMediaExporter'`<br />
 __Manual__: Copy the __BSMediaExporter__ folder in your project<br />
 
 Import header in your project.
